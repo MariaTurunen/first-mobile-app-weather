@@ -7,8 +7,6 @@ import WeatherInfo from './weatherInfo'
 const API_KEY = '530b567c8d884a92805d47dba3b9174d'
 //
 // TODO:....
-//scroll down does not work.
-// Search city not found, API used for the day?
 // CSS: gap between icons
 
 export default Weather = () => {
@@ -24,7 +22,6 @@ export default Weather = () => {
         if (response.status === 200) {
           const data = await response.json();
           setWeatherData(data);
-          console.log(data)
         } else {
           setWeatherData(null);
         }
@@ -35,7 +32,7 @@ export default Weather = () => {
     }
     // remember my city name
     useEffect(() => {
-      fetchWeatherData('London')
+      fetchWeatherData('Tampere')
     },[]);
 
     // Loading message
@@ -51,44 +48,52 @@ export default Weather = () => {
           </View>
       </View>
     )
-    }else if (weatherData=== null) {
+    }else if (weatherData === null) {
         return (
             <View style={styles.container}>
+              <View style={styles.header}>
+                <Text style={styles.headerTitle}> Weather App </Text>
+              </View>
                 <Text> City not Found</Text>
             </View>
 
         )
     }
 
-
+    // basic view
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}> Weather App</Text>
+          <Text style={styles.headerTitle}> Weather App </Text>
         </View>
         <WeatherInfo weatherData={weatherData} fetchWeatherData={fetchWeatherData}/>
       </View>
     )
 }
 // style the items
+// colors;
+// --cultured: #EEEEEEff;
+// --space-cadet: #171738ff;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#FCF5D',
+      backgroundColor: '#EEEEEEff',
       paddingTop: Constants.statusBarHeight,
 
     },
     header: {
       alignItems: 'center',
-      backgroundColor: '#C5D2',
+      backgroundColor: '#171738ff',
       height: 80,
       justifyContent: 'center',
     },
     headerTitle: {
       fontSize: 28,
       fontWeight: 'bold',
+      color:'white'
     },
     content: {
+      flex: 1,
       alignItems: 'center',
       paddingTop:10,
 

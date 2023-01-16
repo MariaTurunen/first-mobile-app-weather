@@ -1,7 +1,6 @@
-import { View, TextInput, StyleSheet, Dimensions} from 'react-native'
-import React, {useState, useEffect}from 'react'
+import { View, TextInput, StyleSheet,} from 'react-native'
+import React, {useState,}from 'react'
 import {EvilIcons} from '@expo/vector-icons'
-
 
 export default WeatherSearch = ({fetchWeatherData}) => {
   const [cityName, setCityname] = useState('');
@@ -11,15 +10,13 @@ export default WeatherSearch = ({fetchWeatherData}) => {
     <TextInput
     placeholder= 'Search City'
     value= {cityName}
-    onChangeText= {(text) => setCityname(text)}
-    />
+    onChangeText= {(text) => setCityname(text)}/>
     <EvilIcons name='search' size= {28} color='black'
-    onPress= {() => fetchWeatherData(cityName)}
-    />
+    onPress= {() => fetchWeatherData(cityName)}/>
     </View>
   );
 }
-
+// style search bar
 const styles = StyleSheet.create({
   searchBar: {
     flexDirection: 'row',
@@ -32,7 +29,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginHorizontal:10,
     paddingHorizontal:10,
-    backgroundColor:'lightgray',
-    // opacity:'60%'
+    backgroundColor:'#E4EFF1',
   },
 });

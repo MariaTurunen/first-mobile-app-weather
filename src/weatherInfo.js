@@ -2,27 +2,10 @@ import { Text, View, StyleSheet, SafeAreaView, Image, Dimensions } from 'react-n
 import React from 'react'
 import WeatherSearch from './search'
 
-
 export default WeatherInfo =({weatherData, fetchWeatherData}) => {
   const {
     data: [{
-        sunrise,
-        sunset,
-        city_name,
-        temp,
-        wind_spd,
-        app_temp,
-        rh,
-        vis,
-        weather: {description, icon}}]
-
-    // name,
-    // visibility,
-    // weather:[ {icon, description }],
-    // main: {temp, humidity, feels_like, },
-    // wind: {speed},
-    // sys: {sunrise, sunset},
-
+        sunrise, sunset, city_name, temp, wind_spd, app_temp, rh, vis, weather: {description, icon}}]
   } = weatherData;
 
   return (
@@ -31,32 +14,25 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
         <View>
           <Text style={styles.title}> {city_name} </Text>
         </View>
-
         <View style={styles.logo}>
           <Image
             style={styles.largeIcon}
-            source={{uri:`https://www.weatherbit.io/static/img/icons/${icon}.png`}}
-          />
+            source={{uri:`https://www.weatherbit.io/static/img/icons/${icon}.png`}}/>
           <Text tyle={styles.currentTemp}> {temp} °C </Text>
         </View>
-
           <Text style={styles.description}> {description} </Text>
-
         <View style={styles.extrainfo}>
           <View style={styles.info}>
             <Image
               style={styles.smallIcon}
-              source={require('../assets/temp.jpg')}
-            />
+              source={require('../assets/temp.jpg')}/>
             <Text tyle={styles.infoText}> {app_temp} °C </Text>
             <Text style={styles.infoText}> FEELS LIKE </Text>
           </View>
-
           <View style={styles.info}>
             <Image
               style={styles.smallIcon}
-              source={require('../assets/humidity.png')}
-            />
+              source={require('../assets/humidity.png')} />
             <Text tyle={styles.infoText}> {rh} % </Text>
             <Text style={styles.infoText}> HUMIDITY </Text>
           </View>
@@ -65,17 +41,14 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
           <View style={styles.info}>
             <Image
               style={styles.smallIcon}
-              source={require('../assets/visibility.png')}
-            />
+              source={require('../assets/visibility.png')}/>
             <Text tyle={styles.infoText}> {vis}       </Text>
             <Text style={styles.infoText}> VISIBILITY </Text>
           </View>
-
           <View style={styles.info}>
             <Image
               style={styles.smallIcon}
-              source={require('../assets/wind.jpg')}
-            />
+              source={require('../assets/wind.jpg')}/>
             <Text tyle={styles.infoText}> {wind_spd} m/s</Text>
             <Text style={styles.infoText}> WIND </Text>
           </View>
@@ -84,17 +57,14 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
           <View style={styles.info}>
             <Image
               style={styles.smallIcon}
-              source={require('../assets/sunrise.png')}
-            />
+              source={require('../assets/sunrise.png')}/>
             <Text tyle={styles.infoText}> {sunrise} </Text>
             <Text style={styles.infoText}> SUNRISE </Text>
           </View>
-
           <View style={styles.info}>
             <Image
               style={styles.smallIcon}
-              source={require('../assets/sunset.jpg')}
-            />
+              source={require('../assets/sunset.jpg')}/>
             <Text tyle={styles.infoText}> {sunset} </Text>
             <Text style={styles.infoText}> SUNSET </Text>
           </View>
@@ -102,7 +72,6 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -151,7 +120,6 @@ const styles = StyleSheet.create({
   },
   info:{
     width: Dimensions.get('screen').width/3,
-    // width: 50,
     backgroundColor: 'white',
     padding: 10,
     borderRadius:15,
@@ -162,6 +130,4 @@ const styles = StyleSheet.create({
     textAlign:'center',
     paddingTop: 5,
   }
-
-
 });

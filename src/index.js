@@ -5,9 +5,6 @@ import WeatherInfo from './weatherInfo'
 
 // API key from https://www.weatherbit.io/api/weather-current
 const API_KEY = '530b567c8d884a92805d47dba3b9174d'
-//
-// TODO:....
-// CSS: gap between icons
 
 export default Weather = () => {
     // states to loading and setting weatherdata....
@@ -19,8 +16,10 @@ export default Weather = () => {
       try {
         SetLoaded(false);
         const response = await fetch(`https://api.weatherbit.io/v2.0/current?city=${cityName}&key=${API_KEY}`);
-        if (response.status === 200) {
+        console.log(response.status);
+        ;if (response.status === 200) {
           const data = await response.json();
+          console.log(data);
           setWeatherData(data);
         } else {
           setWeatherData(null);
@@ -56,10 +55,8 @@ export default Weather = () => {
               </View>
                 <Text> City not Found</Text>
             </View>
-
         )
     }
-
     // basic view
     return (
       <View style={styles.container}>
@@ -79,7 +76,6 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#EEEEEEff',
       paddingTop: Constants.statusBarHeight,
-
     },
     header: {
       alignItems: 'center',
@@ -96,7 +92,6 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       paddingTop:10,
-
     },
     texts: {
       fontSize:20,

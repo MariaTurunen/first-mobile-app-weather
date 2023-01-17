@@ -3,7 +3,7 @@ import Weather from './src'
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View style={styles.appContainer}>
       <ScrollView>
       <Weather />
       </ScrollView>
@@ -12,7 +12,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
     flex: 1,
     justifyContent: 'center',
     paddingTop: 8,

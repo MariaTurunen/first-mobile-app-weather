@@ -9,7 +9,7 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
   } = weatherData;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.infoContainer}>
     <WeatherSearch fetchWeatherData= {fetchWeatherData}/>
         <View>
           <Text style={styles.title}> {city_name} </Text>
@@ -18,7 +18,7 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
           <Image
             style={styles.largeIcon}
             source={{uri:`https://www.weatherbit.io/static/img/icons/${icon}.png`}}/>
-          <Text tyle={styles.currentTemp}> {temp} °C </Text>
+          <Text style={styles.currentTemp}> {temp} °C </Text>
         </View>
           <Text style={styles.description}> {description} </Text>
         <View style={styles.extrainfo}>
@@ -49,7 +49,7 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
             <Image
               style={styles.smallIcon}
               source={require('../assets/wind.jpg')}/>
-            <Text tyle={styles.infoText}> {wind_spd} m/s</Text>
+            <Text tyle={styles.infoText}> {Number((wind_spd).toFixed(2))} m/s</Text>
             <Text style={styles.infoText}> WIND </Text>
           </View>
         </View>
@@ -73,7 +73,7 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
   );
 }
 const styles = StyleSheet.create({
-  container: {
+  infoContainer: {
     alignItems: 'center',
     flex: 1,
     marginTop: 15,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   title: {
     width:'100%',
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 30,
     color:'#C5DF2',
     marginTop:10,
   },
@@ -89,11 +89,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    padding: 5,
+    padding: 2,
   },
   largeIcon: {
-    width:180,
-    height:180,
+    width:160,
+    height:160,
   },
    smallIcon: {
     width:50,
@@ -103,28 +103,29 @@ const styles = StyleSheet.create({
   },
   currentTemp:{
     alignItems: 'center',
-    padding: 15,
-    fontSize: 28,
+    fontSize: 24,
+    width:80,
+    height:80,
   },
   description:{
     textAlign: 'center',
-    fontSize: 20,
-    fontWeight: 'italic',
-    padding: 8,
+    fontSize: 26,
+    marginBottom: 40,
   },
   extrainfo:{
     flexDirection:'row',
-    justifyContent: 'space-around',
-    padding:10,
-    gap: 15,
+    // justifyContent: 'space-between',
+    padding:15,
   },
   info:{
     width: Dimensions.get('screen').width/3,
     backgroundColor: 'white',
-    padding: 10,
+    padding: 15,
     borderRadius:15,
     justifyContent: 'space-around',
     alignItems:'center',
+    gap: 15,
+    margin: 15,
   },
   infoText: {
     textAlign:'center',

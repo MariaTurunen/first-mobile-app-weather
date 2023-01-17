@@ -8,11 +8,13 @@ export default WeatherSearch = ({fetchWeatherData}) => {
   return (
     <View style={styles.searchBar}>
     <TextInput
-    placeholder= 'Search City'
-    value= {cityName}
-    onChangeText= {(text) => setCityname(text)}/>
+    placeholder = 'Search City'
+    value  = {cityName}
+    onChangeText = {(text) => setCityname(text)}
+    />
     <EvilIcons name='search' size= {28} color='black'
-    onPress= {() => fetchWeatherData(cityName)}/>
+    onPress= {() => fetchWeatherData(cityName)}
+    />
     </View>
   );
 }

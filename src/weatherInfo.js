@@ -11,9 +11,9 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
   return (
     <SafeAreaView style={styles.infoContainer}>
     <WeatherSearch fetchWeatherData= {fetchWeatherData}/>
-        <View>
-          <Text style={styles.title}> {city_name} </Text>
-        </View>
+        <View style={styles.cityWeatherInfo}>
+          <Text style={styles.cityTitle}> {city_name} </Text>
+
         <View style={styles.logo}>
           <Image
             style={styles.largeIcon}
@@ -21,6 +21,7 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
           <Text style={styles.currentTemp}> {temp} °C </Text>
         </View>
           <Text style={styles.description}> {description} </Text>
+          </View>
         <View style={styles.extrainfo}>
           <View style={styles.info}>
             <Image
@@ -78,22 +79,36 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 15,
   },
-  title: {
+  cityWeatherInfo:{
+    alignItems: 'center',
+    // backgroundColor: 'white',
+    // backgroundColor: 'red',
+    marginVertical: 30,
+    borderRadius:15,
+    borderColor: '#171738ff',
+    borderWidth: 2,
+    borderStyle:'dotted',
+  },
+  cityTitle: {
     width:'100%',
     textAlign: 'center',
     fontSize: 30,
-    color:'#C5DF2',
-    marginTop:10,
+    marginTop:20,
   },
   logo: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    padding: 2,
+    padding: 5,
+    marginHorizontal:5,
   },
   largeIcon: {
     width:160,
     height:160,
+    marginRight: 30,
+  },
+  currentTemp:{
+    fontSize: 32,
   },
    smallIcon: {
     width:50,
@@ -101,34 +116,29 @@ const styles = StyleSheet.create({
     borderRadius: 40/2,
     marginBottom: 5,
   },
-  currentTemp:{
-    alignItems: 'center',
-    fontSize: 24,
-    width:80,
-    height:80,
-  },
+
   description:{
     textAlign: 'center',
     fontSize: 26,
-    marginBottom: 40,
+    marginBottom: 15,
   },
   extrainfo:{
     flexDirection:'row',
-    // justifyContent: 'space-between',
-    padding:15,
+    padding:10,
   },
   info:{
     width: Dimensions.get('screen').width/3,
     backgroundColor: 'white',
     padding: 15,
     borderRadius:15,
+    borderColor: '#171738ff',
+    // borderWidth: 1,
     justifyContent: 'space-around',
     alignItems:'center',
-    gap: 15,
-    margin: 15,
+    marginHorizontal: 15,
   },
   infoText: {
     textAlign:'center',
-    paddingTop: 5,
+    alignItems: 'center',
   }
 });

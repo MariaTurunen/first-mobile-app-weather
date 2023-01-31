@@ -1,24 +1,25 @@
 import { Text, View, StyleSheet, SafeAreaView, Image, Dimensions } from 'react-native'
 import React from 'react'
 import WeatherSearch from './search'
+import moment from 'moment';
 
 export default WeatherInfo =({weatherData, fetchWeatherData}) => {
   const {
-    data: [{
-        sunrise, sunset, city_name, temp, wind_spd, app_temp, rh, vis, weather: {description, icon}}]
+        sys: { sunrise, sunset,}, name, main: { temp, humidity, feels_like,
+        }, wind: {speed,}, visibility, weather: [{description, icon}],
   } = weatherData;
 
   return (
     <SafeAreaView style={styles.infoContainer}>
     <WeatherSearch fetchWeatherData= {fetchWeatherData}/>
         <View style={styles.cityWeatherInfo}>
-          <Text style={styles.cityTitle}> {city_name} </Text>
+          <Text style={styles.cityTitle}> {name} </Text>
 
         <View style={styles.logo}>
           <Image
             style={styles.largeIcon}
-            source={{uri:`https://www.weatherbit.io/static/img/icons/${icon}.png`}}/>
-          <Text style={styles.currentTemp}> {temp} °C </Text>
+            source={{uri:`https://openweathermap.org/img/wn/${icon}@4x.png`}}/>
+          <Text style={styles.currentTemp}> {Number((temp).toFixed(1))} °C </Text>
         </View>
           <Text style={styles.description}> {description} </Text>
           </View>
@@ -27,14 +28,14 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
             <Image
               style={styles.smallIcon}
               source={require('../assets/temp.jpg')}/>
-            <Text tyle={styles.infoText}> {app_temp} °C </Text>
+            <Text tyle={styles.infoText}> {Number((feels_like).toFixed(1))} °C </Text>
             <Text style={styles.infoText}> FEELS LIKE </Text>
           </View>
           <View style={styles.info}>
             <Image
               style={styles.smallIcon}
               source={require('../assets/humidity.png')} />
-            <Text tyle={styles.infoText}> {rh} % </Text>
+            <Text tyle={styles.infoText}> {humidity} % </Text>
             <Text style={styles.infoText}> HUMIDITY </Text>
           </View>
           </View>
@@ -43,14 +44,14 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
             <Image
               style={styles.smallIcon}
               source={require('../assets/visibility.png')}/>
-            <Text tyle={styles.infoText}> {vis}       </Text>
+            <Text tyle={styles.infoText}> {visibility} m </Text>
             <Text style={styles.infoText}> VISIBILITY </Text>
           </View>
           <View style={styles.info}>
             <Image
               style={styles.smallIcon}
               source={require('../assets/wind.jpg')}/>
-            <Text tyle={styles.infoText}> {Number((wind_spd).toFixed(2))} m/s</Text>
+            <Text tyle={styles.infoText}> {speed} m/s</Text>
             <Text style={styles.infoText}> WIND </Text>
           </View>
         </View>
@@ -59,14 +60,14 @@ export default WeatherInfo =({weatherData, fetchWeatherData}) => {
             <Image
               style={styles.smallIcon}
               source={require('../assets/sunrise.png')}/>
-            <Text tyle={styles.infoText}> {sunrise} </Text>
+            <Text tyle={styles.infoText}> {moment(sunrise).format('LT')} </Text>
             <Text style={styles.infoText}> SUNRISE </Text>
           </View>
           <View style={styles.info}>
             <Image
               style={styles.smallIcon}
               source={require('../assets/sunset.jpg')}/>
-            <Text tyle={styles.infoText}> {sunset} </Text>
+            <Text tyle={styles.infoText}> {moment(sunset).format('LT')} </Text>
             <Text style={styles.infoText}> SUNSET </Text>
           </View>
         </View>

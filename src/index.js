@@ -5,8 +5,12 @@ import Constants from 'expo-constants'
 import WeatherInfo from './weatherInfo'
 import Header from './header'
 
+{/* <TODO> Vaihda API KEY</TODO> */}
+
 // API key from https://www.weatherbit.io/api/weather-current
-const API_KEY = '530b567c8d884a92805d47dba3b9174d'
+// const API_KEY = '530b567c8d884a92805d47dba3b9174d'
+// https://home.openweathermap.org/api_keys
+const API_KEY = '14752da67975d13814dccbc44f9036e7'
 
 export default Weather = () => {
     // states to loading and setting weatherdata....
@@ -17,9 +21,9 @@ export default Weather = () => {
     const fetchWeatherData = async (cityName) => {
       try {
         SetLoaded(false);
-        const response = await fetch(`https://api.weatherbit.io/v2.0/current?city=${cityName}&key=${API_KEY}`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`);
         console.log(response.status);
-        ;if (response.status === 200) {
+        if (response.status === 200) {
           const data = await response.json();
           console.log(data);
           setWeatherData(data);

@@ -2,8 +2,8 @@ import {StyleSheet, Text, View, Alert, ActivityIndicator } from 'react-native'
 import React, {useState, useEffect} from 'react'
 import Constants from 'expo-constants'
 
-import WeatherInfo from './weatherInfo'
-import Header from './header'
+import CurrentWeatherScreen from './CurrentWeatherScreen'
+
 
 {/* <TODO> Vaihda API KEY</TODO> */}
 
@@ -44,7 +44,6 @@ export default Weather = () => {
     if (!loaded) {
       return (
       <View style={styles.container}>
-        <Header></Header>
         <View style={styles.content}>
             <Text style={styles.texts}> Loading...</Text>
             <ActivityIndicator size="large" color="blue" />
@@ -54,7 +53,6 @@ export default Weather = () => {
     }else if (weatherData === null) {
         return (
             <View style={styles.container}>
-              <Header></Header>
                 <Text style={styles.texts}> City not Found</Text>
             </View>
         )
@@ -62,9 +60,8 @@ export default Weather = () => {
     // basic view
     return (
       <View style={styles.container}>
-        <Header weatherData={weatherData}></Header >
         <View style={styles.weatherInfoContainer}>
-          <WeatherInfo weatherData={weatherData} fetchWeatherData={fetchWeatherData}/>
+          <CurrentWeatherScreen weatherData={weatherData} fetchWeatherData={fetchWeatherData}/>
         </View>
       </View>
 
@@ -82,18 +79,6 @@ const styles = StyleSheet.create({
       //  Takes Phone statusbar height
       paddingTop: Constants.statusBarHeight,
     },
-    header: {
-      flex: 1,
-      alignItems: 'center',
-      backgroundColor: '#171738ff',
-      height: 80,
-      justifyContent: 'center',
-    },
-        headerTitle: {
-          fontSize: 28,
-          fontWeight: 'bold',
-          color:'white'
-        },
     content: {
       flex: 1,
       alignItems: 'center',

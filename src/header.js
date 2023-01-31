@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, Alert, ActivityIndicator } from 'react-native'
 // import React, {useState, useEffect} from 'react'
 
-export default Header = ({weatherDAta}) => {
+export default Header = () => {
 
     return (
         <View style={styles.header}>
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     borderRadius:15,
+    marginTop: 25,
     },
   headerTitle: {
     fontSize: 28,

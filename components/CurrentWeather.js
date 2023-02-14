@@ -1,21 +1,35 @@
-import { Text, View, StyleSheet, SafeAreaView, Image, Dimensions } from 'react-native'
+import { Text, View, StyleSheet, SafeAreaView, Image, ScrollView } from 'react-native'
 import React from 'react'
+import { useState,useEffect } from 'react';
 import images from './Images';
 import WeatherSearch from './WeatherSearch'
 import SmallDataComponent from './SmallDataComponent'
+import Header from './Header'
 
-export default CurrentWeatherScreen =({weatherData, fetchWeatherData}) => {
+export default CurrentWeather =({weatherData, fetchWeatherData}) => {
   const {
         sys: { sunrise, sunset,}, name, main: { temp, humidity, feels_like,
         }, wind: {speed,}, visibility, weather: [{description, icon}],
   } = weatherData
 
+  const [currentTime, setCurrentTime] = useState('');
+
+  useEffect(() => {
+    var hours = new Date().getHours(); //Current Hours
+    var min = new Date().getMinutes(); //Current Minutes
+
+    setCurrentTime(
+      hours + ':' + min
+    );
+  }, []);
 
   return (
-    <SafeAreaView style={styles.infoContainer}>
-    <WeatherSearch fetchWeatherData= {fetchWeatherData}/>
-        <View style={styles.cityWeatherInfo}>
-          <Text style={styles.cityTitle}> {name} </Text>
+    <SafeAreaView>
+      <ScrollView>
+      <Header/>
+      <WeatherSearch fetchWeatherData= {fetchWeatherData}/>
+        <View style={styles.cityWeatherInfoBox}>
+          <Text style={styles.cityTitle}> {name}   {currentTime}</Text>
             <View style={styles.logo}>
               <Image
                 style={styles.largeIcon}
@@ -59,35 +73,31 @@ export default CurrentWeatherScreen =({weatherData, fetchWeatherData}) => {
           InfoData={new Date(sunset * 1000).toLocaleTimeString("fi-FI")}
           InfoText={'SUNSET'}/>
         </View>
+        </ScrollView>
     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
-  infoContainer: {
+  cityWeatherInfoBox:{
     alignItems: 'center',
-    flex: 1,
-    marginTop: 15,
-  },
-  cityWeatherInfo:{
-    alignItems: 'center',
-    marginVertical: 30,
+    marginVertical: 20,
     borderRadius:15,
     borderColor: '#171738ff',
     borderWidth: 2,
     borderStyle:'dotted',
+    margin:8,
   },
   cityTitle: {
-    width:'100%',
     textAlign: 'center',
     fontSize: 30,
-    marginTop:20,
+    marginTop:10,
   },
   logo: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
     padding: 5,
-    marginHorizontal:5,
+    marginHorizontal:2,
   },
   largeIcon: {
     width:160,
@@ -100,12 +110,10 @@ const styles = StyleSheet.create({
   description:{
     textAlign: 'center',
     fontSize: 26,
-    marginBottom: 15,
+    paddingBottom: 15,
   },
   extrainfo:{
     flexDirection:'row',
     padding:10,
   },
-
-
 });

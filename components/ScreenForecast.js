@@ -3,8 +3,6 @@ import {StyleSheet, Text, View, SafeAreaView, FlatList, StatusBar, ScrollView} f
 import Constants from 'expo-constants'
 import Header from './Header'
 import ForecastList from './ForecastList'
-import Weather from './ScreenWeather'
-import WeatherSearch from './WeatherSearch'
 
 const DATA = [
   {
@@ -63,10 +61,8 @@ export default ForecastScreen = () => {
         <View style={styles.content}>
           <Header style={styles.header}/>
             {/* <WeatherSearch/> */}
-
               <View style= {styles.SearchAndCity}>
                 <Text style= {styles.city}> Tampere </Text>
-
               </View>
                 <View style= {styles.list}>
                 <ScrollView horizontal={true} style={{ width: "100%" }} >

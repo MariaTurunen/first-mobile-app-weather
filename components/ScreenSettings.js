@@ -8,6 +8,12 @@ export default SettingsScreen = () => {
     <View style = {styles.appContainer}>
       <Text > settings</Text>
     </View>
+    // const startSensors = () =>{
+    // Accelerometer.addListener(data => { setSensorData(data);
+  // })
+  //
+  // }
+  // button title= {"Käynnistä"} onPress= {() => startSensors()}
 
   )
 }

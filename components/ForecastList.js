@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet, StatusBar} from "react-native";
+import { View, Text, StyleSheet,} from "react-native";
 
 export default ForecastList = ({time, description, temperature}) => {
   return (
       <View style= {styles.container}>
-        <Text style= {styles.item}>{time} {temperature} {description}  HERE COMES PICTURE</Text>
+        <Text style= {styles.item}>{time} {temperature} {description}
+        HERE COMES PICTURE</Text>
       </View>
   )
 }

@@ -5,6 +5,7 @@ import Constants from 'expo-constants'
 import CurrentWeather from './CurrentWeather'
 
 // https://home.openweathermap.org/api_keys
+// ATTENTION! Use your own API KEY, this one is unvalid
 const API_KEY = '14752da67975d13814dccbc44f9036e7'
 
 export default Weather = () => {

@@ -6,11 +6,10 @@
 
 A mobile application for checking the current and forecast weather.
 
-### Created with Expo
+### Created with [Expo](https://expo.dev/)
 
 Expo is an open-source platform for making universal native apps that run on Android, iOS, and the web.
 
-[Expo](https://expo.dev/)
 
 ## Screenshot
 
@@ -30,6 +29,10 @@ and a mobile client app called Expo Go to open the project on Android and iOS pl
 
 ##### -> Open Expo Go app 
 follow instructions
+
+### OpenWeatherMap.org
+replace API_KEY variable in ScreenWeather.js file for your own \
+-> Get it from here [openweathermap.org](https://openweathermap.org/)
 
 ## Licence
 
